@@ -18,4 +18,30 @@ pe
 
 dir
 
+local 
+scr/api.workshop
+1)make the git repo 
+git init 
+2)check the sattus of your repo
+git status 
+(red means modification
+green up to date
 
+3)story the files (untrack and modify add all directory)
+git add .
+
+everytime u addd files got to git add to add the files than it comes green 
+
+4)commit local 
+git commit -m '     type msg... '
+(this thing wil fail if have red files ,make it green first)
+
+link offstring if nt ,assuming already add
+
+6)push to github
+git push origin master
+
+5)add upstream 
+git remote add origin 
+
+get utl--   https://github.com/richa(a/c name)/abc(reposatory name).git   
