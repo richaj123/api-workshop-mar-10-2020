@@ -1,0 +1,21 @@
+git src --> current directory
+
+pwd 
+
+git add .
+
+git status
+
+ls
+
+alias
+
+cd
+
+ll
+
+pe
+
+dir
+
+
