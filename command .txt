@@ -28,20 +28,39 @@ git status
 green up to date
 
 3)story the files (untrack and modify add all directory)
+
 git add .
 
 everytime u addd files got to git add to add the files than it comes green 
 
-4)commit local 
-git commit -m '     type msg... '
+4)commit 
+git commit -m '     type msg... 'add 
 (this thing wil fail if have red files ,make it green first)
 
 link offstring if nt ,assuming already add
 
 6)push to github
+
 git push origin master
 
 5)add upstream 
 git remote add origin 
 
 get utl--   https://github.com/richa(a/c name)/abc(reposatory name).git   
+
+
+7)check your upstream 
+git remote -v
+
+if 
+
+for assignment weather 
+
+Key	Name	
+9bf267323a8f639eb6fb6e162779e212
+
+
+news 
+
+39b480f6a0cf4dd1874c6a4176fb6f37
+shift q:
