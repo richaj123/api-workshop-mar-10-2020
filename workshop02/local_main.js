@@ -1,5 +1,6 @@
 const range = require('express-range')
 const compression = require('compression')
+const cors = require('cors')
 
 const express = require('express')
 
@@ -10,6 +11,7 @@ const CitiesDB = require('./zipsdb')
 const db = CitiesDB(data);
 
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
