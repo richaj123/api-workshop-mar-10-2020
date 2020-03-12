@@ -60,10 +60,11 @@ new OpenAPIValidator({
         // TODO GET /api/state/:state
         app.get('/api/state/:state',
             (req, resp) => {//handler
+                console.info(">>>>> state: ")
                 const state = req.params.state;
                 const limit = parseInt(req.query.limit) || 10;
-                const offset = parseInt(req.querry.offset) || 0;
-                const result = db.findCitiesBystate(state, { offset: offset, limit: limit })
+                const offset = parseInt(req.query.offset) || 0;
+                const result = db.findCitiesByState(state, { offset: offset, limit: limit })
                 resp.status(200)
                 resp.type('application/json')
                 resp.json(result)
