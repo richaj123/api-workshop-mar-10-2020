@@ -1,51 +1,107 @@
 openapi: "3.0.3"
 info:
-    title: "ZIPs REST API"
-    description: "My first API"
-    version: "v1.0"
+  title: "ZIPs REST API"
+  description: "My first API"
+  version: "v1.0"
 
 # this is a comment
 servers:
-    - url: http://localhost:3000
-      description: "Development server"
+  - url: http://localhost:3000
+    description: "Development server"
 
 components:
   schemas:
     states:
       type: string
+      description: State Id
       enum: [ "MA", "RI", "NH", "ME", "VT", "CT", "NY", "NJ", "PA", 
               "DE", "DC", "MD", "VA", "WV", "NC", "SC", "GA", "FL", 
               "AL", "TN", "MS", "KY", "OH", "IN", "MI", "IA", "WI", 
               "MN", "SD", "ND", "MT", "IL", "MO", "KS", "NE", "LA", 
               "AR", "OK", "TX", "CO", "WY", "ID", "UT", "AZ", "NM", 
-              "NV", "CA", "HI", "OR", "WA", "AK" ] 
+              "NV", "CA", "HI", "OR", "WA", "AK" ]
+
     city:
       type: object
+      required: [ "city","pop","loc","state" ]
       properties:
-        _id:
-          type: string 
+        _Id:
+          type: string
           description: Id
         city:
           type: string
           description: City name
+        pop:
+          type: number
+          description: city population
         loc:
           type: array
           items:
             type: number
-          maxItems: 2
           minItems: 2
-        pop:
-          type: number
-          minimum: 10
+          maxItems: 2
         state:
           type: string
+          description: State Id
           enum: [ "MA", "RI", "NH", "ME", "VT", "CT", "NY", "NJ", "PA", 
                   "DE", "DC", "MD", "VA", "WV", "NC", "SC", "GA", "FL", 
                   "AL", "TN", "MS", "KY", "OH", "IN", "MI", "IA", "WI", 
                   "MN", "SD", "ND", "MT", "IL", "MO", "KS", "NE", "LA", 
                   "AR", "OK", "TX", "CO", "WY", "ID", "UT", "AZ", "NM", 
                   "NV", "CA", "HI", "OR", "WA", "AK" ] 
+
+    city-form:
+      type: object
+      required: [ "city","pop","lat",lng","state" ]
+      properties:
+        city:
+          type: string
+          description: City name
+        pop:
+          type: number
+          description: city population
+        lat:
+          type: number
+          description: City's latitude
+        lng:
+          type: number
+          description: City's longitude
+        state:
+          type: string
+          description: State Id
+          enum: [ "MA", "RI", "NH", "ME", "VT", "CT", "NY", "NJ", "PA", 
+                  "DE", "DC", "MD", "VA", "WV", "NC", "SC", "GA", "FL", 
+                  "AL", "TN", "MS", "KY", "OH", "IN", "MI", "IA", "WI", 
+                  "MN", "SD", "ND", "MT", "IL", "MO", "KS", "NE", "LA", 
+                  "AR", "OK", "TX", "CO", "WY", "ID", "UT", "AZ", "NM", 
+                  "NV", "CA", "HI", "OR", "WA", "AK" ] 
+      
 paths:
+  /api/city:
+    post:
+      summary:  add anew city
+      operationId: addcity
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/city-form"
+          application/json:
+            schema:
+                $ref: "#/components/schemas/city"
+      responses:
+        201:
+          description: success
+          content:
+              application/json:
+                  schema:
+                    type: object
+                    properties:
+                        message:
+                            type: string
+                  
+
   /api/state/{stateId}:
     get:
       description: Get cities in a state
